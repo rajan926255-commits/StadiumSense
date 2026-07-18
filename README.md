@@ -4,7 +4,7 @@
 
 ### *Every Volunteer. Supercharged.*
 
-[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-stadiumsense.vercel.app-00D4FF?style=for-the-badge)](https://stadiumsense.vercel.app)
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-stadiumsense.vercel.app-00D4FF?style=for-the-badge)](https://stadium-sense-ten.vercel.app/)
 [![Gemini AI](https://img.shields.io/badge/Powered_by-Gemini_AI-4285F4?style=for-the-badge&logo=google)](https://ai.google.dev)
 [![Prompt Wars](https://img.shields.io/badge/Prompt_Wars-Challenge_4-FF6B35?style=for-the-badge)](https://hack2skill.com)
 [![License](https://img.shields.io/badge/License-MIT-00FF88?style=for-the-badge)](LICENSE)
