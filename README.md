@@ -15,7 +15,7 @@
 
 ---
 
-![StadiumSense Dashboard](https://placehold.co/1200x600/0A0E1A/00D4FF?text=StadiumSense+Dashboard+Preview)
+![StadiumSense Dashboard](./screenshots/dashboard.png)
 
 </div>
 
