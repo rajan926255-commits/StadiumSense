@@ -148,31 +148,31 @@ End-of-shift performance analytics.
 <div align="center">
 
 ### Dashboard — Real-time Overview
-![Dashboard](https://placehold.co/800x500/0A0E1A/00D4FF?text=Dashboard+Screenshot)
+![Dashboard](./screenshots/dashboard.png)
 *Live zone meters, sparkline trends, and critical alerts*
 
 ---
 
 ### AI Co-Pilot — Reasoning in Action
-![AI Chat](https://placehold.co/800x500/0A0E1A/00FF88?text=AI+Chat+Screenshot)
+![AI Chat](./screenshots/ai-chat.png)
 *Real Gemini AI responses with analysis, actions & multilingual scripts*
 
 ---
 
 ### Live Zone Map — Stadium Overview
-![Zone Map](https://placehold.co/800x500/0A0E1A/FF4444?text=Zone+Map+Screenshot)
+![Zone Map](./screenshots/zone-map.png)
 *Color-coded top-down stadium view with interactive zones*
 
 ---
 
 ### Incident Log — Field Management
-![Incident Log](https://placehold.co/800x500/0A0E1A/FFB800?text=Incident+Log+Screenshot)
+![Incident Log](./screenshots/incident-log.png)
 *Active incident tracking with AI action plans*
 
 ---
 
 ### Shift Summary — Performance Analytics
-![Shift Summary](https://placehold.co/800x500/0A0E1A/00D4FF?text=Shift+Summary+Screenshot)
+![Shift Summary](./screenshots/shift-summary.png)
 *End-of-shift stats, zone charts, and AI-generated summary*
 
 </div>
@@ -247,7 +247,7 @@ The AI is prompted to behave as a **10-year experienced stadium operations manag
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/StadiumSense.git
+git clone https://github.com//StadiumSense.git
 
 # Navigate to project
 cd StadiumSense
@@ -390,8 +390,8 @@ Volunteers are the most underserved group at any major event. They are young, un
 *B.Tech AI & ML — Chandigarh Engineering College, CGC Landran*
 *Founder, MechaniQ | AI/ML Developer*
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/YOUR_PROFILE)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github)](https://github.com/YOUR_USERNAME)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)]( https://www.linkedin.com/in/rajan-gupta-74688538a/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github)]( https://github.com/rajan926255-commits)
 
 </div>
 
