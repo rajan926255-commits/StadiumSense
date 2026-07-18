@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self';
+           script-src 'self' 'unsafe-inline';
+           style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+           font-src https://fonts.gstatic.com;
+           connect-src https://generativelanguage.googleapis.com;
+           img-src 'self' data: https:;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="microphone=(self), camera=(), geolocation=()">
+
+  <!-- Accessibility -->
+  <meta name="theme-color" content="#0A0E1A">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="StadiumSense — Volunteer AI Co-Pilot">
+  <meta property="og:description" content="AI-powered crowd management for FIFA World Cup 2026 volunteers">
+  <meta property="og:type" content="website">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StadiumSense — Volunteer AI Co-Pilot | FIFA World Cup</title>
-  <meta name="description" content="StadiumSense is a premium AI-powered volunteer co-pilot tool for FIFA World Cup stadium operations — real-time crowd analytics, incident management, and multilingual AI assistance." />
+  <meta name="description"
+    content="StadiumSense is a premium AI-powered volunteer co-pilot tool for FIFA World Cup stadium operations — real-time crowd analytics, incident management, and multilingual AI assistance." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
   <!-- ═══════════════════════════════════════ -->
@@ -32,7 +55,8 @@
       <div class="critical-modal-zone">Zone C: <span id="criticalModalPct">96%</span> Capacity</div>
       <p class="critical-modal-desc">Immediate action required. Fan density approaching unsafe levels at Gate C2.</p>
       <div class="critical-modal-btns">
-        <button class="critical-modal-btn primary" onclick="dismissCriticalModal(); switchTab('ai');">Get AI Plan</button>
+        <button class="critical-modal-btn primary" onclick="dismissCriticalModal(); switchTab('ai');">Get AI
+          Plan</button>
         <button class="critical-modal-btn secondary" onclick="dismissCriticalModal()">Dismiss</button>
       </div>
     </div>
@@ -43,18 +67,20 @@
   <!-- ═══════════════════════════════════════ -->
   <div class="api-key-modal-overlay" id="apiKeyModal" style="display:none;">
     <div class="api-key-modal glass-card">
-      <button class="api-key-modal-close" id="apiKeyModalClose" onclick="closeApiKeyModal()" aria-label="Close modal">✕</button>
+      <button class="api-key-modal-close" id="apiKeyModalClose" onclick="closeApiKeyModal()"
+        aria-label="Close modal">✕</button>
       <div class="api-key-icon">🔑</div>
       <h2 class="api-key-title" id="apiKeyModalTitle">Welcome to StadiumSense</h2>
       <p class="api-key-subtitle" id="apiKeyModalSubtitle">Enter your Gemini API key to activate AI features</p>
-      
+
       <div class="api-key-field-group">
-        <input type="password" id="apiKeyInput" placeholder="AIzaSy..." class="api-key-input" onkeydown="if(event.key==='Enter') submitApiKey()" />
+        <input type="password" id="apiKeyInput" placeholder="AIzaSy..." class="api-key-input"
+          onkeydown="if(event.key==='Enter') submitApiKey()" />
         <div class="api-key-error" id="apiKeyError" style="display:none;">Please enter API key</div>
       </div>
-      
+
       <p class="api-key-disclaimer">🔒 Stored locally in your browser only. Never sent to any server.</p>
-      
+
       <button class="api-key-btn" onclick="submitApiKey()">Activate StadiumSense</button>
     </div>
   </div>
@@ -68,10 +94,11 @@
     <div class="sidebar-brand">
       <div class="sidebar-logo-icon">
         <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="14" stroke="#00D4FF" stroke-width="2" opacity="0.3"/>
-          <circle cx="16" cy="16" r="9" stroke="#00D4FF" stroke-width="1.5"/>
-          <path d="M10 16 Q13 10 16 16 Q19 22 22 16" stroke="#00D4FF" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <circle cx="16" cy="16" r="2.5" fill="#00D4FF"/>
+          <circle cx="16" cy="16" r="14" stroke="#00D4FF" stroke-width="2" opacity="0.3" />
+          <circle cx="16" cy="16" r="9" stroke="#00D4FF" stroke-width="1.5" />
+          <path d="M10 16 Q13 10 16 16 Q19 22 22 16" stroke="#00D4FF" stroke-width="2" fill="none"
+            stroke-linecap="round" />
+          <circle cx="16" cy="16" r="2.5" fill="#00D4FF" />
         </svg>
       </div>
       <div class="sidebar-brand-text">
@@ -88,11 +115,14 @@
 
     <!-- Nav links -->
     <nav class="sidebar-nav" aria-label="Sidebar navigation">
-      <button class="sidebar-nav-item active" id="sidebar-dashboard" onclick="switchTab('dashboard')" aria-label="Dashboard">
+      <button class="sidebar-nav-item active" id="sidebar-dashboard" onclick="switchTab('dashboard')"
+        aria-label="Dashboard">
         <span class="sidebar-nav-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
-            <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
           </svg>
         </span>
         <span class="sidebar-nav-label">Dashboard</span>
@@ -101,10 +131,10 @@
       <button class="sidebar-nav-item" id="sidebar-ai" onclick="switchTab('ai')" aria-label="AI Co-Pilot">
         <span class="sidebar-nav-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="7" width="20" height="14" rx="2"/>
-            <path d="M8 7V4a4 4 0 0 1 8 0v3"/>
-            <circle cx="9" cy="14" r="1.5" fill="currentColor"/>
-            <circle cx="15" cy="14" r="1.5" fill="currentColor"/>
+            <rect x="2" y="7" width="20" height="14" rx="2" />
+            <path d="M8 7V4a4 4 0 0 1 8 0v3" />
+            <circle cx="9" cy="14" r="1.5" fill="currentColor" />
+            <circle cx="15" cy="14" r="1.5" fill="currentColor" />
           </svg>
         </span>
         <span class="sidebar-nav-label">AI Co-Pilot</span>
@@ -113,9 +143,9 @@
       <button class="sidebar-nav-item" id="sidebar-map" onclick="switchTab('map')" aria-label="Live Zone Map">
         <span class="sidebar-nav-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/>
-            <line x1="9" y1="3" x2="9" y2="18"/>
-            <line x1="15" y1="6" x2="15" y2="21"/>
+            <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+            <line x1="9" y1="3" x2="9" y2="18" />
+            <line x1="15" y1="6" x2="15" y2="21" />
           </svg>
         </span>
         <span class="sidebar-nav-label">Live Zone Map</span>
@@ -124,10 +154,10 @@
       <button class="sidebar-nav-item" id="sidebar-log" onclick="switchTab('log')" aria-label="Incident Log">
         <span class="sidebar-nav-icon incident-sidebar-icon" data-count="3">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
           </svg>
         </span>
         <span class="sidebar-nav-label">Incident Log</span>
@@ -137,8 +167,8 @@
       <button class="sidebar-nav-item" id="sidebar-summary" onclick="switchTab('summary')" aria-label="Shift Summary">
         <span class="sidebar-nav-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M9 11l3 3L22 4"/>
-            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            <path d="M9 11l3 3L22 4" />
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
           </svg>
         </span>
         <span class="sidebar-nav-label">Shift Summary</span>
@@ -203,7 +233,8 @@
       <button class="top-bar-alerts" onclick="switchTab('log')">
         🔔 <span class="top-bar-alert-count">3 alerts</span>
       </button>
-      <button class="top-bar-key-btn" onclick="openApiKeyModal(true)" title="Update Gemini API Key" aria-label="Update API Key">
+      <button class="top-bar-key-btn" onclick="openApiKeyModal(true)" title="Update Gemini API Key"
+        aria-label="Update API Key">
         🔑
       </button>
       <div class="top-bar-volunteer">
@@ -230,10 +261,11 @@
             <div class="logo-group">
               <div class="logo-icon">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <circle cx="16" cy="16" r="14" stroke="#00D4FF" stroke-width="2" opacity="0.3"/>
-                  <circle cx="16" cy="16" r="9" stroke="#00D4FF" stroke-width="1.5"/>
-                  <path d="M10 16 Q13 10 16 16 Q19 22 22 16" stroke="#00D4FF" stroke-width="2" fill="none" stroke-linecap="round"/>
-                  <circle cx="16" cy="16" r="2.5" fill="#00D4FF"/>
+                  <circle cx="16" cy="16" r="14" stroke="#00D4FF" stroke-width="2" opacity="0.3" />
+                  <circle cx="16" cy="16" r="9" stroke="#00D4FF" stroke-width="1.5" />
+                  <path d="M10 16 Q13 10 16 16 Q19 22 22 16" stroke="#00D4FF" stroke-width="2" fill="none"
+                    stroke-linecap="round" />
+                  <circle cx="16" cy="16" r="2.5" fill="#00D4FF" />
                 </svg>
               </div>
               <div class="logo-text">
@@ -258,10 +290,10 @@
             <div class="stat-card glass-card">
               <div class="stat-icon fans-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
               </div>
               <div class="stat-body">
@@ -270,15 +302,17 @@
               </div>
               <div class="stat-trend up">+842 <span>↑</span></div>
               <div class="sparkline-wrap">
-                <svg class="sparkline" viewBox="0 0 100 32" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="sparkline" viewBox="0 0 100 32" preserveAspectRatio="none"
+                  xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <linearGradient id="spk-fans" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.25"/>
-                      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
+                      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.25" />
+                      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0" />
                     </linearGradient>
                   </defs>
-                  <polygon points="0,28 16.7,22 33.3,20 50,14 66.7,12 100,4 100,32 0,32" fill="url(#spk-fans)"/>
-                  <polyline points="0,28 16.7,22 33.3,20 50,14 66.7,12 100,4" fill="none" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polygon points="0,28 16.7,22 33.3,20 50,14 66.7,12 100,4 100,32 0,32" fill="url(#spk-fans)" />
+                  <polyline points="0,28 16.7,22 33.3,20 50,14 66.7,12 100,4" fill="none" stroke="#00D4FF"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 <span class="sparkline-label cyan-text">↑ +842 last 5min</span>
               </div>
@@ -286,9 +320,9 @@
             <div class="stat-card glass-card">
               <div class="stat-icon vol-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
-                  <polyline points="16 11 18 13 22 9"/>
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                  <polyline points="16 11 18 13 22 9" />
                 </svg>
               </div>
               <div class="stat-body">
@@ -297,15 +331,17 @@
               </div>
               <div class="stat-trend neutral">On Duty</div>
               <div class="sparkline-wrap">
-                <svg class="sparkline" viewBox="0 0 100 32" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="sparkline" viewBox="0 0 100 32" preserveAspectRatio="none"
+                  xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <linearGradient id="spk-vol" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.25"/>
-                      <stop offset="100%" stop-color="#00FF88" stop-opacity="0"/>
+                      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.25" />
+                      <stop offset="100%" stop-color="#00FF88" stop-opacity="0" />
                     </linearGradient>
                   </defs>
-                  <polygon points="0,28 16.7,24 33.3,18 50,14 66.7,10 100,6 100,32 0,32" fill="url(#spk-vol)"/>
-                  <polyline points="0,28 16.7,24 33.3,18 50,14 66.7,10 100,6" fill="none" stroke="#00FF88" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polygon points="0,28 16.7,24 33.3,18 50,14 66.7,10 100,6 100,32 0,32" fill="url(#spk-vol)" />
+                  <polyline points="0,28 16.7,24 33.3,18 50,14 66.7,10 100,6" fill="none" stroke="#00FF88"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 <span class="sparkline-label green-text">↑ +3 on duty</span>
               </div>
@@ -313,9 +349,9 @@
             <div class="stat-card glass-card critical-card">
               <div class="stat-icon inc-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                  <line x1="12" y1="9" x2="12" y2="13"/>
-                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
                 </svg>
               </div>
               <div class="stat-body">
@@ -324,15 +360,17 @@
               </div>
               <div class="stat-trend danger">Active 🔴</div>
               <div class="sparkline-wrap">
-                <svg class="sparkline" viewBox="0 0 100 32" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="sparkline" viewBox="0 0 100 32" preserveAspectRatio="none"
+                  xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <linearGradient id="spk-inc" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="#FF4444" stop-opacity="0.25"/>
-                      <stop offset="100%" stop-color="#FF4444" stop-opacity="0"/>
+                      <stop offset="0%" stop-color="#FF4444" stop-opacity="0.25" />
+                      <stop offset="100%" stop-color="#FF4444" stop-opacity="0" />
                     </linearGradient>
                   </defs>
-                  <polygon points="0,28 16.7,20 33.3,20 50,12 66.7,12 100,12 100,32 0,32" fill="url(#spk-inc)"/>
-                  <polyline points="0,28 16.7,20 33.3,20 50,12 66.7,12 100,12" fill="none" stroke="#FF4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polygon points="0,28 16.7,20 33.3,20 50,12 66.7,12 100,12 100,32 0,32" fill="url(#spk-inc)" />
+                  <polyline points="0,28 16.7,20 33.3,20 50,12 66.7,12 100,12" fill="none" stroke="#FF4444"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 <span class="sparkline-label red-text">↑ Zone C surge</span>
               </div>
@@ -353,7 +391,8 @@
                   </span>
                 </div>
                 <div class="zones-grid">
-                  <div class="zone-card glass-card zone-green" id="zone-A" onclick="selectZone('A')" tabindex="0" role="button" aria-label="Zone A crowd meter">
+                  <div class="zone-card glass-card zone-green" id="zone-A" onclick="selectZone('A')" tabindex="0"
+                    role="button" aria-label="Zone A crowd meter">
                     <div class="zone-header">
                       <span class="zone-label">Zone A</span>
                       <span class="zone-badge badge-safe">SAFE</span>
@@ -361,9 +400,8 @@
                     <div class="zone-meter">
                       <svg class="circular-meter" viewBox="0 0 100 100">
                         <circle class="meter-bg" cx="50" cy="50" r="38" />
-                        <circle class="meter-fill green-fill" cx="50" cy="50" r="38"
-                          stroke-dasharray="238.76" stroke-dashoffset="131.3"
-                          style="--target-offset:131.3" />
+                        <circle class="meter-fill green-fill" cx="50" cy="50" r="38" stroke-dasharray="238.76"
+                          stroke-dashoffset="131.3" style="--target-offset:131.3" />
                         <text class="meter-pct" x="50" y="54" text-anchor="middle">45%</text>
                       </svg>
                     </div>
@@ -373,7 +411,8 @@
                     </div>
                   </div>
 
-                  <div class="zone-card glass-card zone-yellow" id="zone-B" onclick="selectZone('B')" tabindex="0" role="button" aria-label="Zone B crowd meter">
+                  <div class="zone-card glass-card zone-yellow" id="zone-B" onclick="selectZone('B')" tabindex="0"
+                    role="button" aria-label="Zone B crowd meter">
                     <div class="zone-header">
                       <span class="zone-label">Zone B</span>
                       <span class="zone-badge badge-moderate">MODERATE</span>
@@ -381,9 +420,8 @@
                     <div class="zone-meter">
                       <svg class="circular-meter" viewBox="0 0 100 100">
                         <circle class="meter-bg" cx="50" cy="50" r="38" />
-                        <circle class="meter-fill yellow-fill" cx="50" cy="50" r="38"
-                          stroke-dasharray="238.76" stroke-dashoffset="90.73"
-                          style="--target-offset:90.73" />
+                        <circle class="meter-fill yellow-fill" cx="50" cy="50" r="38" stroke-dasharray="238.76"
+                          stroke-dashoffset="90.73" style="--target-offset:90.73" />
                         <text class="meter-pct" x="50" y="54" text-anchor="middle">62%</text>
                       </svg>
                     </div>
@@ -393,7 +431,8 @@
                     </div>
                   </div>
 
-                  <div class="zone-card glass-card zone-red critical-pulse" id="zone-C" onclick="selectZone('C')" tabindex="0" role="button" aria-label="Zone C crowd meter - CRITICAL">
+                  <div class="zone-card glass-card zone-red critical-pulse" id="zone-C" onclick="selectZone('C')"
+                    tabindex="0" role="button" aria-label="Zone C crowd meter - CRITICAL">
                     <div class="zone-header">
                       <span class="zone-label">Zone C</span>
                       <span class="zone-badge badge-critical">CRITICAL</span>
@@ -401,9 +440,8 @@
                     <div class="zone-meter">
                       <svg class="circular-meter" viewBox="0 0 100 100">
                         <circle class="meter-bg" cx="50" cy="50" r="38" />
-                        <circle class="meter-fill red-fill" cx="50" cy="50" r="38"
-                          stroke-dasharray="238.76" stroke-dashoffset="28.65"
-                          style="--target-offset:28.65" />
+                        <circle class="meter-fill red-fill" cx="50" cy="50" r="38" stroke-dasharray="238.76"
+                          stroke-dashoffset="28.65" style="--target-offset:28.65" />
                         <text class="meter-pct" x="50" y="54" text-anchor="middle">87%</text>
                       </svg>
                     </div>
@@ -413,7 +451,8 @@
                     </div>
                   </div>
 
-                  <div class="zone-card glass-card zone-green" id="zone-D" onclick="selectZone('D')" tabindex="0" role="button" aria-label="Zone D crowd meter">
+                  <div class="zone-card glass-card zone-green" id="zone-D" onclick="selectZone('D')" tabindex="0"
+                    role="button" aria-label="Zone D crowd meter">
                     <div class="zone-header">
                       <span class="zone-label">Zone D</span>
                       <span class="zone-badge badge-safe">SAFE</span>
@@ -421,9 +460,8 @@
                     <div class="zone-meter">
                       <svg class="circular-meter" viewBox="0 0 100 100">
                         <circle class="meter-bg" cx="50" cy="50" r="38" />
-                        <circle class="meter-fill green-fill" cx="50" cy="50" r="38"
-                          stroke-dasharray="238.76" stroke-dashoffset="157.58"
-                          style="--target-offset:157.58" />
+                        <circle class="meter-fill green-fill" cx="50" cy="50" r="38" stroke-dasharray="238.76"
+                          stroke-dashoffset="157.58" style="--target-offset:157.58" />
                         <text class="meter-pct" x="50" y="54" text-anchor="middle">34%</text>
                       </svg>
                     </div>
@@ -433,7 +471,8 @@
                     </div>
                   </div>
 
-                  <div class="zone-card glass-card zone-yellow" id="zone-E" onclick="selectZone('E')" tabindex="0" role="button" aria-label="Zone E crowd meter">
+                  <div class="zone-card glass-card zone-yellow" id="zone-E" onclick="selectZone('E')" tabindex="0"
+                    role="button" aria-label="Zone E crowd meter">
                     <div class="zone-header">
                       <span class="zone-label">Zone E</span>
                       <span class="zone-badge badge-moderate">MODERATE</span>
@@ -441,9 +480,8 @@
                     <div class="zone-meter">
                       <svg class="circular-meter" viewBox="0 0 100 100">
                         <circle class="meter-bg" cx="50" cy="50" r="38" />
-                        <circle class="meter-fill yellow-fill" cx="50" cy="50" r="38"
-                          stroke-dasharray="238.76" stroke-dashoffset="71.63"
-                          style="--target-offset:71.63" />
+                        <circle class="meter-fill yellow-fill" cx="50" cy="50" r="38" stroke-dasharray="238.76"
+                          stroke-dashoffset="71.63" style="--target-offset:71.63" />
                         <text class="meter-pct" x="50" y="54" text-anchor="middle">71%</text>
                       </svg>
                     </div>
@@ -453,7 +491,8 @@
                     </div>
                   </div>
 
-                  <div class="zone-card glass-card zone-green" id="zone-F" onclick="selectZone('F')" tabindex="0" role="button" aria-label="Zone F crowd meter">
+                  <div class="zone-card glass-card zone-green" id="zone-F" onclick="selectZone('F')" tabindex="0"
+                    role="button" aria-label="Zone F crowd meter">
                     <div class="zone-header">
                       <span class="zone-label">Zone F</span>
                       <span class="zone-badge badge-safe">SAFE</span>
@@ -461,9 +500,8 @@
                     <div class="zone-meter">
                       <svg class="circular-meter" viewBox="0 0 100 100">
                         <circle class="meter-bg" cx="50" cy="50" r="38" />
-                        <circle class="meter-fill green-fill" cx="50" cy="50" r="38"
-                          stroke-dasharray="238.76" stroke-dashoffset="171.91"
-                          style="--target-offset:171.91" />
+                        <circle class="meter-fill green-fill" cx="50" cy="50" r="38" stroke-dasharray="238.76"
+                          stroke-dashoffset="171.91" style="--target-offset:171.91" />
                         <text class="meter-pct" x="50" y="54" text-anchor="middle">28%</text>
                       </svg>
                     </div>
@@ -509,108 +547,121 @@
                 </div>
               </div>
               <div class="dash-map-wrapper glass-card">
-                <svg class="stadium-map" viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stadium zone map">
+                <svg class="stadium-map" viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" role="img"
+                  aria-label="Stadium zone map">
                   <defs>
                     <filter id="dash-glow-c">
-                      <feGaussianBlur stdDeviation="3" result="blur"/>
-                      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                      <feGaussianBlur stdDeviation="3" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
                     </filter>
                     <filter id="dash-glow-border">
-                      <feGaussianBlur stdDeviation="4" result="blur"/>
-                      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                      <feGaussianBlur stdDeviation="4" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
                     </filter>
                   </defs>
                   <!-- Outer stadium boundary with cyan glow -->
-                  <ellipse cx="200" cy="180" rx="192" ry="167" fill="none" stroke="rgba(0,212,255,0.18)" stroke-width="6" filter="url(#dash-glow-border)"/>
-                  <ellipse cx="200" cy="180" rx="192" ry="167" fill="#0A0E1A" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/>
+                  <ellipse cx="200" cy="180" rx="192" ry="167" fill="none" stroke="rgba(0,212,255,0.18)"
+                    stroke-width="6" filter="url(#dash-glow-border)" />
+                  <ellipse cx="200" cy="180" rx="192" ry="167" fill="#0A0E1A" stroke="rgba(0,212,255,0.5)"
+                    stroke-width="1.5" />
                   <!-- Stadium seating area base -->
-                  <ellipse cx="200" cy="180" rx="190" ry="165" fill="#0D1220"/>
+                  <ellipse cx="200" cy="180" rx="190" ry="165" fill="#0D1220" />
                   <!-- Zone A — North top arc (Green 45%) -->
-                  <path d="M 88 74 Q 200 18 312 74 Q 260 112 200 118 Q 140 112 88 74 Z"
-                    fill="rgba(0,255,136,0.22)" stroke="#00FF88" stroke-width="1.5"
-                    class="map-zone" id="dashMapZoneA" onclick="selectZone('A')" role="button" tabindex="0"
-                    aria-label="Zone A - 45% capacity" style="cursor:pointer"/>
+                  <path d="M 88 74 Q 200 18 312 74 Q 260 112 200 118 Q 140 112 88 74 Z" fill="rgba(0,255,136,0.22)"
+                    stroke="#00FF88" stroke-width="1.5" class="map-zone" id="dashMapZoneA" onclick="selectZone('A')"
+                    role="button" tabindex="0" aria-label="Zone A - 45% capacity" style="cursor:pointer" />
                   <text x="200" y="76" text-anchor="middle" class="map-zone-label">A</text>
                   <text x="200" y="92" text-anchor="middle" class="map-zone-pct" fill="#00FF88">45%</text>
                   <!-- Zone B — Right top quadrant (Yellow 62%) -->
                   <path d="M 312 74 Q 386 118 390 180 Q 372 200 312 208 Q 284 172 290 136 Q 298 108 312 74 Z"
-                    fill="rgba(255,214,0,0.22)" stroke="#FFD600" stroke-width="1.5"
-                    class="map-zone" id="dashMapZoneB" onclick="selectZone('B')" role="button" tabindex="0"
-                    aria-label="Zone B - 62% capacity" style="cursor:pointer"/>
+                    fill="rgba(255,214,0,0.22)" stroke="#FFD600" stroke-width="1.5" class="map-zone" id="dashMapZoneB"
+                    onclick="selectZone('B')" role="button" tabindex="0" aria-label="Zone B - 62% capacity"
+                    style="cursor:pointer" />
                   <text x="355" y="147" text-anchor="middle" class="map-zone-label">B</text>
                   <text x="355" y="163" text-anchor="middle" class="map-zone-pct" fill="#FFD600">62%</text>
                   <!-- Zone C — Right bottom quadrant (RED 87% CRITICAL) -->
-                  <path d="M 312 208 Q 386 242 390 180 Q 372 200 312 208 M 312 208 Q 372 220 370 260 Q 340 320 312 286 Q 284 250 290 216 Z"
-                    fill="rgba(255,68,68,0.28)" stroke="#FF4444" stroke-width="2"
-                    class="map-zone critical-zone" id="dashMapZoneC" onclick="selectZone('C')" role="button" tabindex="0"
-                    aria-label="Zone C - 87% capacity - CRITICAL" style="cursor:pointer" filter="url(#dash-glow-c)"/>
+                  <path
+                    d="M 312 208 Q 386 242 390 180 Q 372 200 312 208 M 312 208 Q 372 220 370 260 Q 340 320 312 286 Q 284 250 290 216 Z"
+                    fill="rgba(255,68,68,0.28)" stroke="#FF4444" stroke-width="2" class="map-zone critical-zone"
+                    id="dashMapZoneC" onclick="selectZone('C')" role="button" tabindex="0"
+                    aria-label="Zone C - 87% capacity - CRITICAL" style="cursor:pointer" filter="url(#dash-glow-c)" />
                   <text x="355" y="254" text-anchor="middle" class="map-zone-label" fill="#FF6666">C</text>
                   <text x="355" y="270" text-anchor="middle" class="map-zone-pct" fill="#FF4444">87%</text>
                   <!-- Zone D — South bottom arc (Green 34%) -->
-                  <path d="M 88 286 Q 200 342 312 286 Q 260 248 200 242 Q 140 248 88 286 Z"
-                    fill="rgba(0,255,136,0.22)" stroke="#00FF88" stroke-width="1.5"
-                    class="map-zone" id="dashMapZoneD" onclick="selectZone('D')" role="button" tabindex="0"
-                    aria-label="Zone D - 34% capacity" style="cursor:pointer"/>
+                  <path d="M 88 286 Q 200 342 312 286 Q 260 248 200 242 Q 140 248 88 286 Z" fill="rgba(0,255,136,0.22)"
+                    stroke="#00FF88" stroke-width="1.5" class="map-zone" id="dashMapZoneD" onclick="selectZone('D')"
+                    role="button" tabindex="0" aria-label="Zone D - 34% capacity" style="cursor:pointer" />
                   <text x="200" y="302" text-anchor="middle" class="map-zone-label">D</text>
                   <text x="200" y="318" text-anchor="middle" class="map-zone-pct" fill="#00FF88">34%</text>
                   <!-- Zone E — Left bottom quadrant (Yellow 71%) -->
-                  <path d="M 88 286 Q 28 250 10 180 Q 18 200 88 208 Q 116 250 110 216 Z"
-                    fill="rgba(255,214,0,0.22)" stroke="#FFD600" stroke-width="1.5"
-                    class="map-zone" id="dashMapZoneE" onclick="selectZone('E')" role="button" tabindex="0"
-                    aria-label="Zone E - 71% capacity" style="cursor:pointer"/>
+                  <path d="M 88 286 Q 28 250 10 180 Q 18 200 88 208 Q 116 250 110 216 Z" fill="rgba(255,214,0,0.22)"
+                    stroke="#FFD600" stroke-width="1.5" class="map-zone" id="dashMapZoneE" onclick="selectZone('E')"
+                    role="button" tabindex="0" aria-label="Zone E - 71% capacity" style="cursor:pointer" />
                   <text x="44" y="263" text-anchor="middle" class="map-zone-label">E</text>
                   <text x="44" y="279" text-anchor="middle" class="map-zone-pct" fill="#FFD600">71%</text>
                   <!-- Zone F — Left top quadrant (Green 28%) -->
                   <path d="M 88 74 Q 10 118 10 180 Q 28 160 88 152 Q 116 110 110 136 Q 102 108 88 74 Z"
-                    fill="rgba(0,255,136,0.22)" stroke="#00FF88" stroke-width="1.5"
-                    class="map-zone" id="dashMapZoneF" onclick="selectZone('F')" role="button" tabindex="0"
-                    aria-label="Zone F - 28% capacity" style="cursor:pointer"/>
+                    fill="rgba(0,255,136,0.22)" stroke="#00FF88" stroke-width="1.5" class="map-zone" id="dashMapZoneF"
+                    onclick="selectZone('F')" role="button" tabindex="0" aria-label="Zone F - 28% capacity"
+                    style="cursor:pointer" />
                   <text x="44" y="143" text-anchor="middle" class="map-zone-label">F</text>
                   <text x="44" y="159" text-anchor="middle" class="map-zone-pct" fill="#00FF88">28%</text>
                   <!-- Football pitch -->
-                  <ellipse cx="200" cy="180" rx="88" ry="68" fill="#0A2E18"/>
-                  <ellipse cx="200" cy="180" rx="86" ry="66" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                  <ellipse cx="200" cy="180" rx="88" ry="68" fill="#0A2E18" />
+                  <ellipse cx="200" cy="180" rx="86" ry="66" fill="none" stroke="rgba(255,255,255,0.3)"
+                    stroke-width="1" />
                   <!-- Halfway line -->
-                  <line x1="114" y1="180" x2="286" y2="180" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
+                  <line x1="114" y1="180" x2="286" y2="180" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" />
                   <!-- Centre circle -->
-                  <ellipse cx="200" cy="180" rx="22" ry="18" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
-                  <circle cx="200" cy="180" r="2.5" fill="rgba(255,255,255,0.5)"/>
+                  <ellipse cx="200" cy="180" rx="22" ry="18" fill="none" stroke="rgba(255,255,255,0.3)"
+                    stroke-width="0.8" />
+                  <circle cx="200" cy="180" r="2.5" fill="rgba(255,255,255,0.5)" />
                   <!-- Penalty boxes -->
-                  <rect x="174" y="114" width="52" height="22" rx="1" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
-                  <rect x="182" y="114" width="36" height="12" rx="1" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7"/>
-                  <rect x="174" y="224" width="52" height="22" rx="1" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
-                  <rect x="182" y="232" width="36" height="12" rx="1" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7"/>
+                  <rect x="174" y="114" width="52" height="22" rx="1" fill="none" stroke="rgba(255,255,255,0.25)"
+                    stroke-width="0.8" />
+                  <rect x="182" y="114" width="36" height="12" rx="1" fill="none" stroke="rgba(255,255,255,0.2)"
+                    stroke-width="0.7" />
+                  <rect x="174" y="224" width="52" height="22" rx="1" fill="none" stroke="rgba(255,255,255,0.25)"
+                    stroke-width="0.8" />
+                  <rect x="182" y="232" width="36" height="12" rx="1" fill="none" stroke="rgba(255,255,255,0.2)"
+                    stroke-width="0.7" />
                   <!-- Corner arcs -->
-                  <path d="M 114 148 Q 120 148 120 154" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7"/>
-                  <path d="M 286 148 Q 280 148 280 154" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7"/>
-                  <path d="M 114 212 Q 120 212 120 206" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7"/>
-                  <path d="M 286 212 Q 280 212 280 206" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7"/>
+                  <path d="M 114 148 Q 120 148 120 154" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7" />
+                  <path d="M 286 148 Q 280 148 280 154" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7" />
+                  <path d="M 114 212 Q 120 212 120 206" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7" />
+                  <path d="M 286 212 Q 280 212 280 206" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7" />
                   <!-- Critical Zone C pulse dot -->
-                  <circle cx="340" cy="238" r="5" fill="#FF4444" class="critical-blink" opacity="0.9"/>
+                  <circle cx="340" cy="238" r="5" fill="#FF4444" class="critical-blink" opacity="0.9" />
                   <!-- Gate markers -->
                   <g class="gate-markers">
-                    <circle cx="160" cy="16" r="4" fill="#00D4FF" opacity="0.8"/>
+                    <circle cx="160" cy="16" r="4" fill="#00D4FF" opacity="0.8" />
                     <text x="160" y="10" text-anchor="middle" font-size="6" fill="#00D4FF">G-A1</text>
-                    <circle cx="240" cy="16" r="4" fill="#00D4FF" opacity="0.8"/>
+                    <circle cx="240" cy="16" r="4" fill="#00D4FF" opacity="0.8" />
                     <text x="240" y="10" text-anchor="middle" font-size="6" fill="#00D4FF">G-A2</text>
-                    <circle cx="392" cy="130" r="4" fill="#00D4FF" opacity="0.8"/>
+                    <circle cx="392" cy="130" r="4" fill="#00D4FF" opacity="0.8" />
                     <text x="390" y="124" text-anchor="middle" font-size="6" fill="#00D4FF">G-B1</text>
-                    <circle cx="392" cy="246" r="4" fill="#FF4444" opacity="0.9" class="critical-blink"/>
+                    <circle cx="392" cy="246" r="4" fill="#FF4444" opacity="0.9" class="critical-blink" />
                     <text x="390" y="240" text-anchor="middle" font-size="6" fill="#FF4444">G-C1</text>
-                    <circle cx="160" cy="349" r="4" fill="#00D4FF" opacity="0.8"/>
+                    <circle cx="160" cy="349" r="4" fill="#00D4FF" opacity="0.8" />
                     <text x="160" y="358" text-anchor="middle" font-size="6" fill="#00D4FF">G-D1</text>
-                    <circle cx="240" cy="349" r="4" fill="#00D4FF" opacity="0.8"/>
+                    <circle cx="240" cy="349" r="4" fill="#00D4FF" opacity="0.8" />
                     <text x="240" y="358" text-anchor="middle" font-size="6" fill="#00D4FF">G-D2</text>
-                    <circle cx="8" cy="246" r="4" fill="#00D4FF" opacity="0.8"/>
+                    <circle cx="8" cy="246" r="4" fill="#00D4FF" opacity="0.8" />
                     <text x="14" y="240" text-anchor="middle" font-size="6" fill="#00D4FF">G-E1</text>
-                    <circle cx="8" cy="130" r="4" fill="#00D4FF" opacity="0.8"/>
+                    <circle cx="8" cy="130" r="4" fill="#00D4FF" opacity="0.8" />
                     <text x="14" y="124" text-anchor="middle" font-size="6" fill="#00D4FF">G-F1</text>
                   </g>
                   <!-- Compass -->
                   <g transform="translate(374, 30)">
-                    <circle cx="0" cy="0" r="12" fill="#141824" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                    <circle cx="0" cy="0" r="12" fill="#141824" stroke="rgba(0,212,255,0.3)" stroke-width="1" />
                     <text x="0" y="-3" text-anchor="middle" font-size="7" fill="#8899BB">N</text>
-                    <path d="M0,-9 L2,-3 L0,-5 L-2,-3 Z" fill="#00D4FF"/>
+                    <path d="M0,-9 L2,-3 L0,-5 L-2,-3 Z" fill="#00D4FF" />
                   </g>
                 </svg>
               </div>
@@ -709,11 +760,12 @@
               <div class="ai-status-row">
                 <div class="ai-avatar">
                   <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                    <rect x="4" y="8" width="20" height="14" rx="3" stroke="#00D4FF" stroke-width="1.5"/>
-                    <rect x="9" y="4" width="10" height="5" rx="2" stroke="#00D4FF" stroke-width="1.5"/>
-                    <circle cx="10" cy="15" r="2" fill="#00D4FF" opacity="0.8"/>
-                    <circle cx="18" cy="15" r="2" fill="#00D4FF" opacity="0.8"/>
-                    <path d="M10 19 Q14 21 18 19" stroke="#00D4FF" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                    <rect x="4" y="8" width="20" height="14" rx="3" stroke="#00D4FF" stroke-width="1.5" />
+                    <rect x="9" y="4" width="10" height="5" rx="2" stroke="#00D4FF" stroke-width="1.5" />
+                    <circle cx="10" cy="15" r="2" fill="#00D4FF" opacity="0.8" />
+                    <circle cx="18" cy="15" r="2" fill="#00D4FF" opacity="0.8" />
+                    <path d="M10 19 Q14 21 18 19" stroke="#00D4FF" stroke-width="1.2" fill="none"
+                      stroke-linecap="round" />
                   </svg>
                 </div>
                 <div class="ai-info">
@@ -760,10 +812,10 @@
               <div class="chat-row ai-row">
                 <div class="ai-msg-avatar">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="2">
-                    <rect x="2" y="7" width="20" height="14" rx="2"/>
-                    <path d="M8 7V4a4 4 0 0 1 8 0v3"/>
-                    <circle cx="9" cy="14" r="1.5" fill="#00D4FF"/>
-                    <circle cx="15" cy="14" r="1.5" fill="#00D4FF"/>
+                    <rect x="2" y="7" width="20" height="14" rx="2" />
+                    <path d="M8 7V4a4 4 0 0 1 8 0v3" />
+                    <circle cx="9" cy="14" r="1.5" fill="#00D4FF" />
+                    <circle cx="15" cy="14" r="1.5" fill="#00D4FF" />
                   </svg>
                 </div>
                 <div class="ai-response-card">
@@ -780,10 +832,13 @@
                   </div>
                   <div class="ai-section analysis-section">
                     <p class="ai-section-title">📊 Analysis</p>
-                    <p class="ai-body-text">Based on entry swipe patterns, Zone C will reach <strong>100% capacity in ~4 minutes</strong>. Gate C2 throughput is currently 340 fans/min — highest across all zones.</p>
+                    <p class="ai-body-text">Based on entry swipe patterns, Zone C will reach <strong>100% capacity in ~4
+                        minutes</strong>. Gate C2 throughput is currently 340 fans/min — highest across all zones.</p>
                     <div class="confidence-row">
                       <span class="conf-label">Confidence</span>
-                      <div class="conf-bar"><div class="conf-fill" style="width: 94%"></div></div>
+                      <div class="conf-bar">
+                        <div class="conf-fill" style="width: 94%"></div>
+                      </div>
                       <span class="conf-pct">94%</span>
                     </div>
                   </div>
@@ -804,28 +859,34 @@
                       <div class="announcement-item">
                         <span class="lang-flag">🇬🇧</span>
                         <p>'Please proceed to Gate A for faster entry'</p>
-                        <button class="copy-btn" onclick="copyText(this, 'Please proceed to Gate A for faster entry')" aria-label="Copy English announcement">Copy</button>
+                        <button class="copy-btn" onclick="copyText(this, 'Please proceed to Gate A for faster entry')"
+                          aria-label="Copy English announcement">Copy</button>
                       </div>
                       <div class="announcement-item">
                         <span class="lang-flag">🇪🇸</span>
                         <p>'Por favor diríjase a la Puerta A'</p>
-                        <button class="copy-btn" onclick="copyText(this, 'Por favor diríjase a la Puerta A')" aria-label="Copy Spanish announcement">Copy</button>
+                        <button class="copy-btn" onclick="copyText(this, 'Por favor diríjase a la Puerta A')"
+                          aria-label="Copy Spanish announcement">Copy</button>
                       </div>
                       <div class="announcement-item">
                         <span class="lang-flag">🇫🇷</span>
                         <p>'Veuillez vous diriger vers la Porte A'</p>
-                        <button class="copy-btn" onclick="copyText(this, 'Veuillez vous diriger vers la Porte A')" aria-label="Copy French announcement">Copy</button>
+                        <button class="copy-btn" onclick="copyText(this, 'Veuillez vous diriger vers la Porte A')"
+                          aria-label="Copy French announcement">Copy</button>
                       </div>
                       <div class="announcement-item">
                         <span class="lang-flag">🇮🇳</span>
                         <p>'कृपया Gate A की ओर जाएं'</p>
-                        <button class="copy-btn" onclick="copyText(this, 'कृपया Gate A की ओर जाएं')" aria-label="Copy Hindi announcement">Copy</button>
+                        <button class="copy-btn" onclick="copyText(this, 'कृपया Gate A की ओर जाएं')"
+                          aria-label="Copy Hindi announcement">Copy</button>
                       </div>
                     </div>
                   </div>
                   <div class="ai-action-btns">
-                    <button class="ai-act-btn primary-act execute-plan-btn" onclick="executePlan(event)" style="cursor:pointer">✓ Execute Plan</button>
-                    <button class="ai-act-btn secondary-act" onclick="showToast('Broadcasting to all screens...')">📢 Broadcast</button>
+                    <button class="ai-act-btn primary-act execute-plan-btn" onclick="executePlan(event)"
+                      style="cursor:pointer">✓ Execute Plan</button>
+                    <button class="ai-act-btn secondary-act" onclick="showToast('Broadcasting to all screens...')">📢
+                      Broadcast</button>
                   </div>
                   <span class="bubble-time ai-time">20:44 • 1.2s response</span>
                 </div>
@@ -834,7 +895,7 @@
               <div id="typingIndicator" class="typing-indicator hidden">
                 <div class="ai-msg-avatar small">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="2">
-                    <rect x="2" y="7" width="20" height="14" rx="2"/>
+                    <rect x="2" y="7" width="20" height="14" rx="2" />
                   </svg>
                 </div>
                 <div class="typing-bubble">
@@ -850,12 +911,18 @@
 
             <!-- Zone Context Chips -->
             <div class="zone-chips-row" id="zoneChipsRow">
-              <button class="zone-chip zone-chip-green" onclick="sendZoneChipQuery('A')" aria-label="Query Zone A">Zone A 45% 🟢</button>
-              <button class="zone-chip zone-chip-yellow" onclick="sendZoneChipQuery('B')" aria-label="Query Zone B">Zone B 62% 🟡</button>
-              <button class="zone-chip zone-chip-red" onclick="sendZoneChipQuery('C')" aria-label="Query Zone C">Zone C 87% 🔴</button>
-              <button class="zone-chip zone-chip-green" onclick="sendZoneChipQuery('D')" aria-label="Query Zone D">Zone D 34% 🟢</button>
-              <button class="zone-chip zone-chip-yellow" onclick="sendZoneChipQuery('E')" aria-label="Query Zone E">Zone E 71% 🟡</button>
-              <button class="zone-chip zone-chip-green" onclick="sendZoneChipQuery('F')" aria-label="Query Zone F">Zone F 28% 🟢</button>
+              <button class="zone-chip zone-chip-green" onclick="sendZoneChipQuery('A')" aria-label="Query Zone A">Zone
+                A 45% 🟢</button>
+              <button class="zone-chip zone-chip-yellow" onclick="sendZoneChipQuery('B')" aria-label="Query Zone B">Zone
+                B 62% 🟡</button>
+              <button class="zone-chip zone-chip-red" onclick="sendZoneChipQuery('C')" aria-label="Query Zone C">Zone C
+                87% 🔴</button>
+              <button class="zone-chip zone-chip-green" onclick="sendZoneChipQuery('D')" aria-label="Query Zone D">Zone
+                D 34% 🟢</button>
+              <button class="zone-chip zone-chip-yellow" onclick="sendZoneChipQuery('E')" aria-label="Query Zone E">Zone
+                E 71% 🟡</button>
+              <button class="zone-chip zone-chip-green" onclick="sendZoneChipQuery('F')" aria-label="Query Zone F">Zone
+                F 28% 🟢</button>
             </div>
 
             <!-- Mic + Input Row -->
@@ -864,25 +931,27 @@
                 <button class="mic-btn" id="micBtn" onclick="toggleMic()" aria-label="Activate voice input">
                   <span class="mic-glow"></span>
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                    <line x1="12" y1="19" x2="12" y2="23"/>
-                    <line x1="8" y1="23" x2="16" y2="23"/>
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                    <line x1="12" y1="19" x2="12" y2="23" />
+                    <line x1="8" y1="23" x2="16" y2="23" />
                   </svg>
                   <span class="mic-label" id="micLabel">Tap to Speak</span>
                 </button>
               </div>
               <div class="text-input-row">
-                <input type="text" class="chat-input" id="chatInput" placeholder="Type or speak your query..." aria-label="Chat message input" />
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type or speak your query..."
+                  aria-label="Chat message input" />
                 <button class="send-btn" onclick="sendMessage()" aria-label="Send message">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="22" y1="2" x2="11" y2="13"/>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    <line x1="22" y1="2" x2="11" y2="13" />
+                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
                   </svg>
                 </button>
               </div>
               <div class="quick-prompts">
-                <button class="qp-btn" onclick="sendQuickPrompt('Crowd forecast next 30 minutes?')">Crowd Forecast</button>
+                <button class="qp-btn" onclick="sendQuickPrompt('Crowd forecast next 30 minutes?')">Crowd
+                  Forecast</button>
                 <button class="qp-btn" onclick="sendQuickPrompt('Show evacuation routes')">Evacuation Routes</button>
                 <button class="qp-btn" onclick="sendQuickPrompt('Medical team status?')">Medical Status</button>
               </div>
@@ -901,32 +970,44 @@
               <div class="context-zone-list" id="contextZoneList">
                 <div class="context-zone-card green-border">
                   <span class="context-zone-name">Zone A</span>
-                  <div class="context-zone-bar-wrap"><div class="context-zone-bar green-bar" style="width:45%"></div></div>
+                  <div class="context-zone-bar-wrap">
+                    <div class="context-zone-bar green-bar" style="width:45%"></div>
+                  </div>
                   <span class="context-zone-pct green-text">45%</span>
                 </div>
                 <div class="context-zone-card yellow-border">
                   <span class="context-zone-name">Zone B</span>
-                  <div class="context-zone-bar-wrap"><div class="context-zone-bar yellow-bar" style="width:62%"></div></div>
+                  <div class="context-zone-bar-wrap">
+                    <div class="context-zone-bar yellow-bar" style="width:62%"></div>
+                  </div>
                   <span class="context-zone-pct yellow-text">62%</span>
                 </div>
                 <div class="context-zone-card red-border context-zone-highlight">
                   <span class="context-zone-name">Zone C</span>
-                  <div class="context-zone-bar-wrap"><div class="context-zone-bar red-bar" style="width:87%"></div></div>
+                  <div class="context-zone-bar-wrap">
+                    <div class="context-zone-bar red-bar" style="width:87%"></div>
+                  </div>
                   <span class="context-zone-pct red-text">87%</span>
                 </div>
                 <div class="context-zone-card green-border">
                   <span class="context-zone-name">Zone D</span>
-                  <div class="context-zone-bar-wrap"><div class="context-zone-bar green-bar" style="width:34%"></div></div>
+                  <div class="context-zone-bar-wrap">
+                    <div class="context-zone-bar green-bar" style="width:34%"></div>
+                  </div>
                   <span class="context-zone-pct green-text">34%</span>
                 </div>
                 <div class="context-zone-card yellow-border">
                   <span class="context-zone-name">Zone E</span>
-                  <div class="context-zone-bar-wrap"><div class="context-zone-bar yellow-bar" style="width:71%"></div></div>
+                  <div class="context-zone-bar-wrap">
+                    <div class="context-zone-bar yellow-bar" style="width:71%"></div>
+                  </div>
                   <span class="context-zone-pct yellow-text">71%</span>
                 </div>
                 <div class="context-zone-card green-border">
                   <span class="context-zone-name">Zone F</span>
-                  <div class="context-zone-bar-wrap"><div class="context-zone-bar green-bar" style="width:28%"></div></div>
+                  <div class="context-zone-bar-wrap">
+                    <div class="context-zone-bar green-bar" style="width:28%"></div>
+                  </div>
                   <span class="context-zone-pct green-text">28%</span>
                 </div>
               </div>
@@ -985,116 +1066,131 @@
                 </div>
               </div>
               <div class="map-legend">
-                <span class="legend-item"><span class="legend-dot" style="background:#00FF88"></span> Safe (0-60%)</span>
-                <span class="legend-item"><span class="legend-dot" style="background:#FFD600"></span> Moderate (61-79%)</span>
-                <span class="legend-item"><span class="legend-dot" style="background:#FF4444"></span> Critical (80%+)</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#00FF88"></span> Safe
+                  (0-60%)</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#FFD600"></span> Moderate
+                  (61-79%)</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#FF4444"></span> Critical
+                  (80%+)</span>
               </div>
             </div>
 
             <div class="map-container">
-              <svg class="stadium-map" viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stadium zone map">
+              <svg class="stadium-map" viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" role="img"
+                aria-label="Stadium zone map">
                 <defs>
                   <filter id="map-glow-c">
-                    <feGaussianBlur stdDeviation="3" result="blur"/>
-                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
                   </filter>
                   <filter id="map-glow-border">
-                    <feGaussianBlur stdDeviation="5" result="blur"/>
-                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    <feGaussianBlur stdDeviation="5" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
                   </filter>
                 </defs>
                 <!-- Outer stadium boundary with cyan glow -->
-                <ellipse cx="200" cy="180" rx="192" ry="167" fill="none" stroke="rgba(0,212,255,0.18)" stroke-width="8" filter="url(#map-glow-border)"/>
-                <ellipse cx="200" cy="180" rx="192" ry="167" fill="#0A0E1A" stroke="rgba(0,212,255,0.55)" stroke-width="1.5"/>
+                <ellipse cx="200" cy="180" rx="192" ry="167" fill="none" stroke="rgba(0,212,255,0.18)" stroke-width="8"
+                  filter="url(#map-glow-border)" />
+                <ellipse cx="200" cy="180" rx="192" ry="167" fill="#0A0E1A" stroke="rgba(0,212,255,0.55)"
+                  stroke-width="1.5" />
                 <!-- Stadium seating base -->
-                <ellipse cx="200" cy="180" rx="190" ry="165" fill="#0D1220"/>
+                <ellipse cx="200" cy="180" rx="190" ry="165" fill="#0D1220" />
                 <!-- Zone A — North top arc (Green 45%) -->
-                <path d="M 88 74 Q 200 18 312 74 Q 260 112 200 118 Q 140 112 88 74 Z"
-                  fill="rgba(0,255,136,0.22)" stroke="#00FF88" stroke-width="1.5"
-                  class="map-zone" id="mapZoneA" onclick="showZonePopup('A')" role="button" tabindex="0"
-                  aria-label="Zone A - 45% capacity" style="cursor:pointer"/>
+                <path d="M 88 74 Q 200 18 312 74 Q 260 112 200 118 Q 140 112 88 74 Z" fill="rgba(0,255,136,0.22)"
+                  stroke="#00FF88" stroke-width="1.5" class="map-zone" id="mapZoneA" onclick="showZonePopup('A')"
+                  role="button" tabindex="0" aria-label="Zone A - 45% capacity" style="cursor:pointer" />
                 <text x="200" y="73" text-anchor="middle" class="map-zone-label">A</text>
                 <text x="200" y="89" text-anchor="middle" class="map-zone-pct" fill="#00FF88">45%</text>
                 <!-- Zone B — Right top quadrant (Yellow 62%) -->
                 <path d="M 312 74 Q 386 118 390 180 Q 372 200 312 208 Q 284 172 290 136 Q 298 108 312 74 Z"
-                  fill="rgba(255,214,0,0.22)" stroke="#FFD600" stroke-width="1.5"
-                  class="map-zone" id="mapZoneB" onclick="showZonePopup('B')" role="button" tabindex="0"
-                  aria-label="Zone B - 62% capacity" style="cursor:pointer"/>
+                  fill="rgba(255,214,0,0.22)" stroke="#FFD600" stroke-width="1.5" class="map-zone" id="mapZoneB"
+                  onclick="showZonePopup('B')" role="button" tabindex="0" aria-label="Zone B - 62% capacity"
+                  style="cursor:pointer" />
                 <text x="355" y="146" text-anchor="middle" class="map-zone-label">B</text>
                 <text x="355" y="162" text-anchor="middle" class="map-zone-pct" fill="#FFD600">62%</text>
                 <!-- Zone C — Right bottom quadrant (RED 87% CRITICAL) -->
-                <path d="M 312 208 Q 372 220 370 260 Q 340 320 312 286 Q 284 250 290 216 Z"
-                  fill="rgba(255,68,68,0.3)" stroke="#FF4444" stroke-width="2"
-                  class="map-zone critical-zone" id="mapZoneC" onclick="showZonePopup('C')" role="button" tabindex="0"
-                  aria-label="Zone C - 87% capacity - CRITICAL" style="cursor:pointer" filter="url(#map-glow-c)"/>
+                <path d="M 312 208 Q 372 220 370 260 Q 340 320 312 286 Q 284 250 290 216 Z" fill="rgba(255,68,68,0.3)"
+                  stroke="#FF4444" stroke-width="2" class="map-zone critical-zone" id="mapZoneC"
+                  onclick="showZonePopup('C')" role="button" tabindex="0" aria-label="Zone C - 87% capacity - CRITICAL"
+                  style="cursor:pointer" filter="url(#map-glow-c)" />
                 <text x="355" y="254" text-anchor="middle" class="map-zone-label" fill="#FF6666">C</text>
                 <text x="355" y="270" text-anchor="middle" class="map-zone-pct" fill="#FF4444">87%</text>
                 <!-- Zone D — South bottom arc (Green 34%) -->
-                <path d="M 88 286 Q 200 342 312 286 Q 260 248 200 242 Q 140 248 88 286 Z"
-                  fill="rgba(0,255,136,0.22)" stroke="#00FF88" stroke-width="1.5"
-                  class="map-zone" id="mapZoneD" onclick="showZonePopup('D')" role="button" tabindex="0"
-                  aria-label="Zone D - 34% capacity" style="cursor:pointer"/>
+                <path d="M 88 286 Q 200 342 312 286 Q 260 248 200 242 Q 140 248 88 286 Z" fill="rgba(0,255,136,0.22)"
+                  stroke="#00FF88" stroke-width="1.5" class="map-zone" id="mapZoneD" onclick="showZonePopup('D')"
+                  role="button" tabindex="0" aria-label="Zone D - 34% capacity" style="cursor:pointer" />
                 <text x="200" y="302" text-anchor="middle" class="map-zone-label">D</text>
                 <text x="200" y="318" text-anchor="middle" class="map-zone-pct" fill="#00FF88">34%</text>
                 <!-- Zone E — Left bottom quadrant (Yellow 71%) -->
-                <path d="M 88 286 Q 28 250 10 180 Q 18 200 88 208 Q 116 250 110 216 Z"
-                  fill="rgba(255,214,0,0.22)" stroke="#FFD600" stroke-width="1.5"
-                  class="map-zone" id="mapZoneE" onclick="showZonePopup('E')" role="button" tabindex="0"
-                  aria-label="Zone E - 71% capacity" style="cursor:pointer"/>
+                <path d="M 88 286 Q 28 250 10 180 Q 18 200 88 208 Q 116 250 110 216 Z" fill="rgba(255,214,0,0.22)"
+                  stroke="#FFD600" stroke-width="1.5" class="map-zone" id="mapZoneE" onclick="showZonePopup('E')"
+                  role="button" tabindex="0" aria-label="Zone E - 71% capacity" style="cursor:pointer" />
                 <text x="44" y="263" text-anchor="middle" class="map-zone-label">E</text>
                 <text x="44" y="279" text-anchor="middle" class="map-zone-pct" fill="#FFD600">71%</text>
                 <!-- Zone F — Left top quadrant (Green 28%) -->
                 <path d="M 88 74 Q 10 118 10 180 Q 28 160 88 152 Q 116 110 110 136 Q 102 108 88 74 Z"
-                  fill="rgba(0,255,136,0.22)" stroke="#00FF88" stroke-width="1.5"
-                  class="map-zone" id="mapZoneF" onclick="showZonePopup('F')" role="button" tabindex="0"
-                  aria-label="Zone F - 28% capacity" style="cursor:pointer"/>
+                  fill="rgba(0,255,136,0.22)" stroke="#00FF88" stroke-width="1.5" class="map-zone" id="mapZoneF"
+                  onclick="showZonePopup('F')" role="button" tabindex="0" aria-label="Zone F - 28% capacity"
+                  style="cursor:pointer" />
                 <text x="44" y="142" text-anchor="middle" class="map-zone-label">F</text>
                 <text x="44" y="158" text-anchor="middle" class="map-zone-pct" fill="#00FF88">28%</text>
                 <!-- Football pitch -->
-                <ellipse cx="200" cy="180" rx="88" ry="68" fill="#0A2E18"/>
-                <ellipse cx="200" cy="180" rx="86" ry="66" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                <ellipse cx="200" cy="180" rx="88" ry="68" fill="#0A2E18" />
+                <ellipse cx="200" cy="180" rx="86" ry="66" fill="none" stroke="rgba(255,255,255,0.3)"
+                  stroke-width="1" />
                 <!-- Halfway line -->
-                <line x1="114" y1="180" x2="286" y2="180" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
+                <line x1="114" y1="180" x2="286" y2="180" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" />
                 <!-- Centre circle -->
-                <ellipse cx="200" cy="180" rx="22" ry="18" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
-                <circle cx="200" cy="180" r="2.5" fill="rgba(255,255,255,0.5)"/>
+                <ellipse cx="200" cy="180" rx="22" ry="18" fill="none" stroke="rgba(255,255,255,0.3)"
+                  stroke-width="0.8" />
+                <circle cx="200" cy="180" r="2.5" fill="rgba(255,255,255,0.5)" />
                 <!-- Penalty boxes top -->
-                <rect x="174" y="114" width="52" height="22" rx="1" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
-                <rect x="182" y="114" width="36" height="12" rx="1" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7"/>
+                <rect x="174" y="114" width="52" height="22" rx="1" fill="none" stroke="rgba(255,255,255,0.25)"
+                  stroke-width="0.8" />
+                <rect x="182" y="114" width="36" height="12" rx="1" fill="none" stroke="rgba(255,255,255,0.2)"
+                  stroke-width="0.7" />
                 <!-- Penalty boxes bottom -->
-                <rect x="174" y="224" width="52" height="22" rx="1" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
-                <rect x="182" y="232" width="36" height="12" rx="1" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7"/>
+                <rect x="174" y="224" width="52" height="22" rx="1" fill="none" stroke="rgba(255,255,255,0.25)"
+                  stroke-width="0.8" />
+                <rect x="182" y="232" width="36" height="12" rx="1" fill="none" stroke="rgba(255,255,255,0.2)"
+                  stroke-width="0.7" />
                 <!-- Corner arcs -->
-                <path d="M 114 148 Q 121 148 121 155" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7"/>
-                <path d="M 286 148 Q 279 148 279 155" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7"/>
-                <path d="M 114 212 Q 121 212 121 205" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7"/>
-                <path d="M 286 212 Q 279 212 279 205" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7"/>
+                <path d="M 114 148 Q 121 148 121 155" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7" />
+                <path d="M 286 148 Q 279 148 279 155" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7" />
+                <path d="M 114 212 Q 121 212 121 205" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7" />
+                <path d="M 286 212 Q 279 212 279 205" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.7" />
                 <!-- Critical Zone C pulse dot -->
-                <circle cx="340" cy="238" r="5" fill="#FF4444" class="critical-blink" opacity="0.9"/>
+                <circle cx="340" cy="238" r="5" fill="#FF4444" class="critical-blink" opacity="0.9" />
                 <!-- Gate markers -->
                 <g class="gate-markers">
-                  <circle cx="160" cy="16" r="4" fill="#00D4FF" opacity="0.85"/>
+                  <circle cx="160" cy="16" r="4" fill="#00D4FF" opacity="0.85" />
                   <text x="160" y="10" text-anchor="middle" font-size="6" fill="#00D4FF">G-A1</text>
-                  <circle cx="240" cy="16" r="4" fill="#00D4FF" opacity="0.85"/>
+                  <circle cx="240" cy="16" r="4" fill="#00D4FF" opacity="0.85" />
                   <text x="240" y="10" text-anchor="middle" font-size="6" fill="#00D4FF">G-A2</text>
-                  <circle cx="392" cy="130" r="4" fill="#00D4FF" opacity="0.85"/>
+                  <circle cx="392" cy="130" r="4" fill="#00D4FF" opacity="0.85" />
                   <text x="388" y="124" text-anchor="end" font-size="6" fill="#00D4FF">G-B1</text>
-                  <circle cx="392" cy="246" r="4" fill="#FF4444" opacity="0.9" class="critical-blink"/>
+                  <circle cx="392" cy="246" r="4" fill="#FF4444" opacity="0.9" class="critical-blink" />
                   <text x="388" y="240" text-anchor="end" font-size="6" fill="#FF4444">G-C1</text>
-                  <circle cx="160" cy="349" r="4" fill="#00D4FF" opacity="0.85"/>
+                  <circle cx="160" cy="349" r="4" fill="#00D4FF" opacity="0.85" />
                   <text x="160" y="358" text-anchor="middle" font-size="6" fill="#00D4FF">G-D1</text>
-                  <circle cx="240" cy="349" r="4" fill="#00D4FF" opacity="0.85"/>
+                  <circle cx="240" cy="349" r="4" fill="#00D4FF" opacity="0.85" />
                   <text x="240" y="358" text-anchor="middle" font-size="6" fill="#00D4FF">G-D2</text>
-                  <circle cx="8" cy="246" r="4" fill="#00D4FF" opacity="0.85"/>
+                  <circle cx="8" cy="246" r="4" fill="#00D4FF" opacity="0.85" />
                   <text x="14" y="240" text-anchor="start" font-size="6" fill="#00D4FF">G-E1</text>
-                  <circle cx="8" cy="130" r="4" fill="#00D4FF" opacity="0.85"/>
+                  <circle cx="8" cy="130" r="4" fill="#00D4FF" opacity="0.85" />
                   <text x="14" y="124" text-anchor="start" font-size="6" fill="#00D4FF">G-F1</text>
                 </g>
                 <!-- Compass -->
                 <g transform="translate(374, 30)">
-                  <circle cx="0" cy="0" r="12" fill="#141824" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+                  <circle cx="0" cy="0" r="12" fill="#141824" stroke="rgba(0,212,255,0.3)" stroke-width="1" />
                   <text x="0" y="-3" text-anchor="middle" font-size="7" fill="#8899BB">N</text>
-                  <path d="M0,-9 L2,-3 L0,-5 L-2,-3 Z" fill="#00D4FF"/>
+                  <path d="M0,-9 L2,-3 L0,-5 L-2,-3 Z" fill="#00D4FF" />
                 </g>
               </svg>
 
@@ -1109,17 +1205,21 @@
                 <div class="popup-detail" id="popupDetail">58,666 fans • Near Limit</div>
                 <div class="popup-ai-rec" id="popupAiRec">
                   <span class="popup-rec-label">🤖 AI Recommendation</span>
-                  <p id="popupRecText">Redirect fans to Zone A and Zone D immediately. Deploy 2 volunteers to Gate C2.</p>
+                  <p id="popupRecText">Redirect fans to Zone A and Zone D immediately. Deploy 2 volunteers to Gate C2.
+                  </p>
                 </div>
-                <button class="popup-action-btn" onclick="switchTab('ai'); closeZonePopup();">View Full AI Plan →</button>
+                <button class="popup-action-btn" onclick="switchTab('ai'); closeZonePopup();">View Full AI Plan
+                  →</button>
               </div>
             </div>
 
             <!-- Map Stats Bar -->
             <div class="map-stats-bar glass-card">
-              <div class="map-stat"><span class="ms-val green-text">3</span><span class="ms-label">Safe Zones</span></div>
+              <div class="map-stat"><span class="ms-val green-text">3</span><span class="ms-label">Safe Zones</span>
+              </div>
               <div class="map-stat-div"></div>
-              <div class="map-stat"><span class="ms-val yellow-text">2</span><span class="ms-label">Moderate</span></div>
+              <div class="map-stat"><span class="ms-val yellow-text">2</span><span class="ms-label">Moderate</span>
+              </div>
               <div class="map-stat-div"></div>
               <div class="map-stat"><span class="ms-val red-text">1</span><span class="ms-label">Critical</span></div>
               <div class="map-stat-div"></div>
@@ -1176,7 +1276,8 @@
                 </div>
               </div>
 
-              <button class="popup-action-btn" style="margin-top:16px" onclick="switchTab('ai')">Get Full AI Plan →</button>
+              <button class="popup-action-btn" style="margin-top:16px" onclick="switchTab('ai')">Get Full AI Plan
+                →</button>
             </div>
           </div><!-- end map-detail-panel -->
 
@@ -1201,13 +1302,14 @@
                 <h2 class="log-title">Incident Log</h2>
                 <div class="incident-count-badge">3 Active</div>
               </div>
-              <button class="report-voice-btn" id="reportVoiceBtn" onclick="toggleReportMic()" aria-label="Report incident by voice">
+              <button class="report-voice-btn" id="reportVoiceBtn" onclick="toggleReportMic()"
+                aria-label="Report incident by voice">
                 <span class="report-mic-glow"></span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                  <line x1="12" y1="19" x2="12" y2="23"/>
-                  <line x1="8" y1="23" x2="16" y2="23"/>
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                  <line x1="12" y1="19" x2="12" y2="23" />
+                  <line x1="8" y1="23" x2="16" y2="23" />
                 </svg>
                 <span id="reportMicLabel">🎤 Report Incident</span>
               </button>
@@ -1217,18 +1319,21 @@
             <div class="filter-tabs">
               <button class="filter-tab active" onclick="filterIncidents('all', this)" id="filterAll">All (5)</button>
               <button class="filter-tab" onclick="filterIncidents('active', this)" id="filterActive">Active (2)</button>
-              <button class="filter-tab" onclick="filterIncidents('progress', this)" id="filterProgress">In Progress (1)</button>
-              <button class="filter-tab" onclick="filterIncidents('resolved', this)" id="filterResolved">Resolved (2)</button>
+              <button class="filter-tab" onclick="filterIncidents('progress', this)" id="filterProgress">In Progress
+                (1)</button>
+              <button class="filter-tab" onclick="filterIncidents('resolved', this)" id="filterResolved">Resolved
+                (2)</button>
             </div>
 
             <!-- Incident Cards -->
             <div class="incidents-list" id="incidentsList">
 
-              <div class="incident-card glass-card active-incident" data-status="active" onclick="selectIncident(this, 'crowd-surge')">
+              <div class="incident-card glass-card active-incident" data-status="active"
+                onclick="selectIncident(this, 'crowd-surge')">
                 <div class="inc-left">
                   <div class="inc-type-icon medical-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                     </svg>
                   </div>
                 </div>
@@ -1250,12 +1355,13 @@
                 </div>
               </div>
 
-              <div class="incident-card glass-card progress-incident" data-status="progress" onclick="selectIncident(this, 'lost-fan')">
+              <div class="incident-card glass-card progress-incident" data-status="progress"
+                onclick="selectIncident(this, 'lost-fan')">
                 <div class="inc-left">
                   <div class="inc-type-icon lost-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <circle cx="11" cy="11" r="8"/>
-                      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                      <circle cx="11" cy="11" r="8" />
+                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
                     </svg>
                   </div>
                 </div>
@@ -1277,14 +1383,15 @@
                 </div>
               </div>
 
-              <div class="incident-card glass-card active-incident" data-status="active" onclick="selectIncident(this, 'medical-e')">
+              <div class="incident-card glass-card active-incident" data-status="active"
+                onclick="selectIncident(this, 'medical-e')">
                 <div class="inc-left">
                   <div class="inc-type-icon crowd-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                      <circle cx="9" cy="7" r="4"/>
-                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                     </svg>
                   </div>
                 </div>
@@ -1306,11 +1413,12 @@
                 </div>
               </div>
 
-              <div class="incident-card glass-card resolved-incident" data-status="resolved" onclick="selectIncident(this, 'heat-exhaustion')">
+              <div class="incident-card glass-card resolved-incident" data-status="resolved"
+                onclick="selectIncident(this, 'heat-exhaustion')">
                 <div class="inc-left">
                   <div class="inc-type-icon resolved-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <polyline points="20 6 9 17 4 12"/>
+                      <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
                 </div>
@@ -1332,11 +1440,12 @@
                 </div>
               </div>
 
-              <div class="incident-card glass-card resolved-incident" data-status="resolved" onclick="selectIncident(this, 'access-issue')">
+              <div class="incident-card glass-card resolved-incident" data-status="resolved"
+                onclick="selectIncident(this, 'access-issue')">
                 <div class="inc-left">
                   <div class="inc-type-icon resolved-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <polyline points="20 6 9 17 4 12"/>
+                      <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
                 </div>
@@ -1378,15 +1487,20 @@
               <div class="log-detail-location" id="logDetailLocation">Gate C2 — Zone C</div>
               <div class="log-detail-time" id="logDetailTime">Reported: 20:41</div>
               <div class="log-detail-desc-box glass-card" id="logDetailDesc">
-                High density crowd pushing toward Gate C2. Risk of surge event. Situation requires immediate intervention to prevent crowd crush.
+                High density crowd pushing toward Gate C2. Risk of surge event. Situation requires immediate
+                intervention to prevent crowd crush.
               </div>
               <div class="log-detail-ai-box">
                 <div class="log-detail-ai-label">🤖 AI Suggested Action</div>
-                <p id="logDetailAiAction">Deploy crowd barriers immediately to Gate C2. Dispatch 3 volunteers to manage flow. Redirect incoming fans to Zone A and D via PA announcement. Estimated time to safe levels: 6 minutes.</p>
+                <p id="logDetailAiAction">Deploy crowd barriers immediately to Gate C2. Dispatch 3 volunteers to manage
+                  flow. Redirect incoming fans to Zone A and D via PA announcement. Estimated time to safe levels: 6
+                  minutes.</p>
               </div>
               <div class="log-detail-actions">
                 <button class="desktop-qa-btn cyan-btn" onclick="switchTab('ai')">Get AI Plan</button>
-                <button class="desktop-qa-btn" style="background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3);color:var(--green)" onclick="showToast('✅ Incident marked as resolved')">Mark Resolved</button>
+                <button class="desktop-qa-btn"
+                  style="background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3);color:var(--green)"
+                  onclick="showToast('✅ Incident marked as resolved')">Mark Resolved</button>
               </div>
             </div>
           </div><!-- end log-detail-panel -->
@@ -1440,37 +1554,43 @@
               <div class="summary-bar-row">
                 <span class="summary-bar-label">Zone A</span>
                 <div class="summary-bar-track">
-                  <div class="summary-bar-fill green-bar-fill" style="width: 16.6%"><span class="summary-bar-count">2</span></div>
+                  <div class="summary-bar-fill green-bar-fill" style="width: 16.6%"><span
+                      class="summary-bar-count">2</span></div>
                 </div>
               </div>
               <div class="summary-bar-row">
                 <span class="summary-bar-label">Zone B</span>
                 <div class="summary-bar-track">
-                  <div class="summary-bar-fill green-bar-fill" style="width: 8.3%"><span class="summary-bar-count">1</span></div>
+                  <div class="summary-bar-fill green-bar-fill" style="width: 8.3%"><span
+                      class="summary-bar-count">1</span></div>
                 </div>
               </div>
               <div class="summary-bar-row">
                 <span class="summary-bar-label">Zone C</span>
                 <div class="summary-bar-track">
-                  <div class="summary-bar-fill red-bar-fill" style="width: 41.6%"><span class="summary-bar-count">5</span></div>
+                  <div class="summary-bar-fill red-bar-fill" style="width: 41.6%"><span
+                      class="summary-bar-count">5</span></div>
                 </div>
               </div>
               <div class="summary-bar-row">
                 <span class="summary-bar-label">Zone D</span>
                 <div class="summary-bar-track">
-                  <div class="summary-bar-fill green-bar-fill" style="width: 8.3%"><span class="summary-bar-count">1</span></div>
+                  <div class="summary-bar-fill green-bar-fill" style="width: 8.3%"><span
+                      class="summary-bar-count">1</span></div>
                 </div>
               </div>
               <div class="summary-bar-row">
                 <span class="summary-bar-label">Zone E</span>
                 <div class="summary-bar-track">
-                  <div class="summary-bar-fill yellow-bar-fill" style="width: 16.6%"><span class="summary-bar-count">2</span></div>
+                  <div class="summary-bar-fill yellow-bar-fill" style="width: 16.6%"><span
+                      class="summary-bar-count">2</span></div>
                 </div>
               </div>
               <div class="summary-bar-row">
                 <span class="summary-bar-label">Zone F</span>
                 <div class="summary-bar-track">
-                  <div class="summary-bar-fill green-bar-fill" style="width: 8.3%"><span class="summary-bar-count">1</span></div>
+                  <div class="summary-bar-fill green-bar-fill" style="width: 8.3%"><span
+                      class="summary-bar-count">1</span></div>
                 </div>
               </div>
             </div>
@@ -1484,7 +1604,10 @@
               <span class="chip">✦ Gemini AI</span>
             </div>
             <p class="summary-ai-text">
-              Strong performance today. Zone C crowd management was efficiently handled with AI-assisted redirections. 3 medical incidents resolved within 4 minutes average. Your response time of 1.2 min is <strong>40% better</strong> than the stadium average of 2.0 min. Excellent work managing high-density crowd scenarios.
+              Strong performance today. Zone C crowd management was efficiently handled with AI-assisted redirections. 3
+              medical incidents resolved within 4 minutes average. Your response time of 1.2 min is <strong>40%
+                better</strong> than the stadium average of 2.0 min. Excellent work managing high-density crowd
+              scenarios.
             </p>
           </div>
 
@@ -1519,10 +1642,10 @@
     <button class="nav-tab active" id="nav-dashboard" onclick="switchTab('dashboard')" aria-label="Dashboard">
       <span class="nav-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="3" y="3" width="7" height="7"/>
-          <rect x="14" y="3" width="7" height="7"/>
-          <rect x="14" y="14" width="7" height="7"/>
-          <rect x="3" y="14" width="7" height="7"/>
+          <rect x="3" y="3" width="7" height="7" />
+          <rect x="14" y="3" width="7" height="7" />
+          <rect x="14" y="14" width="7" height="7" />
+          <rect x="3" y="14" width="7" height="7" />
         </svg>
       </span>
       <span class="nav-label">Dashboard</span>
@@ -1531,10 +1654,10 @@
     <button class="nav-tab" id="nav-ai" onclick="switchTab('ai')" aria-label="AI Chat">
       <span class="nav-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="2" y="7" width="20" height="14" rx="2"/>
-          <path d="M8 7V4a4 4 0 0 1 8 0v3"/>
-          <circle cx="9" cy="14" r="1.5" fill="currentColor"/>
-          <circle cx="15" cy="14" r="1.5" fill="currentColor"/>
+          <rect x="2" y="7" width="20" height="14" rx="2" />
+          <path d="M8 7V4a4 4 0 0 1 8 0v3" />
+          <circle cx="9" cy="14" r="1.5" fill="currentColor" />
+          <circle cx="15" cy="14" r="1.5" fill="currentColor" />
         </svg>
       </span>
       <span class="nav-label">AI Chat</span>
@@ -1543,9 +1666,9 @@
     <button class="nav-tab" id="nav-map" onclick="switchTab('map')" aria-label="Live Map">
       <span class="nav-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/>
-          <line x1="9" y1="3" x2="9" y2="18"/>
-          <line x1="15" y1="6" x2="15" y2="21"/>
+          <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+          <line x1="9" y1="3" x2="9" y2="18" />
+          <line x1="15" y1="6" x2="15" y2="21" />
         </svg>
       </span>
       <span class="nav-label">Map</span>
@@ -1554,11 +1677,11 @@
     <button class="nav-tab" id="nav-log" onclick="switchTab('log')" aria-label="Incident Log">
       <span class="nav-icon incident-nav-icon" data-count="3">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/>
-          <line x1="16" y1="17" x2="8" y2="17"/>
-          <polyline points="10 9 9 9 8 9"/>
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="16" y1="13" x2="8" y2="13" />
+          <line x1="16" y1="17" x2="8" y2="17" />
+          <polyline points="10 9 9 9 8 9" />
         </svg>
       </span>
       <span class="nav-label">Log</span>
@@ -1567,8 +1690,8 @@
     <button class="nav-tab" id="nav-summary" onclick="switchTab('summary')" aria-label="Shift Summary">
       <span class="nav-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M9 11l3 3L22 4"/>
-          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          <path d="M9 11l3 3L22 4" />
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
         </svg>
       </span>
       <span class="nav-label">Summary</span>
@@ -1583,5 +1706,8 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="app.js"></script>
+  <!-- Test Suite -->
+  <script src="tests.js"></script>
 </body>
+
 </html>

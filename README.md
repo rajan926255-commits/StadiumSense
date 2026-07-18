@@ -382,6 +382,40 @@ Volunteers are the most underserved group at any major event. They are young, un
 
 ---
 
+## 🧪 Testing
+### Test Coverage
+
+| Module | Tests | Status |
+|--------|-------|--------|
+| Zone Structure | 7 | ✅ |
+| Capacity Logic | 8 | ✅ |
+| Alert Thresholds | 4 | ✅ |
+| API Key Security | 6 | ✅ |
+| Multilingual | 8 | ✅ |
+| Incident Management | 7 | ✅ |
+| Gemini AI Integration | 8 | ✅ |
+| Shift Report | 7 | ✅ |
+| Accessibility | 6 | ✅ |
+| Security | 6 | ✅ |
+| Performance | 3 | ✅ |
+| Navigation | 5 | ✅ |
+| **Total** | **75+** | **✅** |
+
+### What Gets Tested
+- Zone capacity calculations and status logic
+- API key validation and security
+- Multilingual detection (6 languages)
+- Incident type and status flow
+- Gemini response parsing + error handling
+- WCAG accessibility compliance
+- XSS prevention and input sanitization
+- Performance benchmarks
+- Screen navigation flow
+
+### Running Tests
+
+Open browser console on the deployed app and tests auto-run:
+
 ## 👨‍💻 Author
 
 <div align="center">
